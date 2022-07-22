@@ -28,7 +28,10 @@ public:
 
 	void push_back(T val)
 	{
-		extend();
+		if (vec_size >= vec_capacity)
+		{
+			extend();
+		}
 		arr[vec_size] = val;
 		vec_size++;
 	}
@@ -36,19 +39,16 @@ private:
 	void extend()
 	{
 		// 공간 꽉 참. 여유 공간 확보
-		if (vec_size >= vec_capacity)
+		int prevCapacity = vec_capacity;
+		vec_capacity += DEFAULT_CAPACITY;
+		T* tempArr = new T[vec_capacity];
+		// 값 복사
+		for (int i = 0; i < prevCapacity; ++i)
 		{
-			int prevCapacity = vec_capacity;
-			vec_capacity += DEFAULT_CAPACITY;
-			T* tempArr = new T[vec_capacity];
-			// 값 복사
-			for (int i = 0; i < prevCapacity; ++i)
-			{
-				tempArr[i] = arr[i];
-			}
-			delete[] arr;
-			arr = tempArr;
+			tempArr[i] = arr[i];
 		}
+		delete[] arr;
+		arr = tempArr;
 	}
 
 public:
@@ -71,7 +71,7 @@ public:
 	}
 	T back()
 	{
-		return arr[size];
+		return arr[vec_size];
 	}
 
 	bool empty()
