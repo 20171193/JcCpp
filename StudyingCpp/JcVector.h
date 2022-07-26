@@ -1,7 +1,8 @@
-#ifndef __JCVECTOR_H__
-#define __JCVECTOR_H__
+#ifndef __JC_VECTOR_H__
+#define __JC_VECTOR_H__
 
 #include <iostream>
+#include "JcIterator.h"
 
 #define DEFAULT_CAPACITY 8
 
@@ -21,6 +22,7 @@ public:
 		vec_capacity = DEFAULT_CAPACITY;
 		arr = new T[vec_capacity];
 	}
+
 	~JcVector()
 	{
 		delete[] arr;
@@ -35,6 +37,7 @@ public:
 		arr[vec_size] = val;
 		vec_size++;
 	}
+
 private:
 	void extend()
 	{
@@ -60,15 +63,18 @@ public:
 			vec_size--;
 		}
 	}
+
 	T at(int num)
 	{
 		return arr[num];
 			
 	}
+
 	T front()
 	{
 		return arr[0];
 	}
+
 	T back()
 	{
 		return arr[vec_size];
@@ -85,9 +91,24 @@ public:
 			return false;
 		}
 	}
+
 	int size()
 	{
 		return vec_size;
+	}
+
+// Iterator
+public:
+	typedef JcIterator<T> Iterator;
+
+	Iterator begin()
+	{
+		return Iterator(arr);
+	}
+
+	Iterator end()
+	{
+		return Iterator(arr+vec_size-1);
 	}
 };
 
