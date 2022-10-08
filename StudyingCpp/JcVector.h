@@ -2,12 +2,13 @@
 #define __JC_VECTOR_H__
 
 #include <iostream>
-#include "JcIterator.h"
+
+#include "JcContainer.h"
 
 #define DEFAULT_CAPACITY 8
 
 template<typename T>
-class JcVector
+class JcVector : public JcContainer<T>
 {
 private:
 	int vec_size;
@@ -66,8 +67,7 @@ public:
 
 	T at(int num)
 	{
-		return arr[num];
-			
+		return arr[num];	
 	}
 
 	T front()
@@ -98,17 +98,28 @@ public:
 	}
 
 // Iterator
-public:
+protected:
 	typedef JcIterator<T> Iterator;
 
-	Iterator begin()
+public:
+	virtual Iterator begin() override
 	{
 		return Iterator(arr);
 	}
 
-	Iterator end()
+	virtual Iterator end() override
 	{
 		return Iterator(arr+vec_size-1);
+	}
+
+	virtual Iterator find(T val)
+	{
+		return JcContainer<T>::find_iter(begin(), end(), val);
+	}
+
+	virtual void swap(Iterator val_1, Iterator val_2)
+	{
+		JcContainer<T>::swap(val_1, val_2);
 	}
 };
 

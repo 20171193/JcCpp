@@ -143,10 +143,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="JcAlgorithm.h" />
+    <ClInclude Include="JcContainer.h" />
     <ClInclude Include="JcIterator.h" />
     <ClInclude Include="JcVector.h" />
     <ClInclude Include="JcSort.h" />
-    <ClInclude Include="Container.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

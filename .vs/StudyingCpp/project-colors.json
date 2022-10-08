@@ -10,7 +10,12 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "기타 파일",
       "ColorIndex": -1
+    },
+    "6f7b9d85-2718-4c0f-af05-61cbfc97507a": {
+      "ProjectGuid": "6f7b9d85-2718-4c0f-af05-61cbfc97507a",
+      "DisplayName": "CodingTest",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
